@@ -1,0 +1,17 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb,graphicx,booktabs,algorithm,algorithmic,subcaption,hyperref}
+\title{Hierarchical Key--Value Caching for Memory-Compressed Transformers}
+\author{Anonymous}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Transformers deliver groundbreaking performance across a wide range of NLP tasks but are constrained by quadratic \(O(N^2)\) memory and compute complexities with sequence length \(N\). We introduce \emph{Hierarchical Key--Value Caching} (HKVC), a multi-level memory-compression strategy that maintains exact context for a recent sliding window while aggregating older tokens into hierarchical summaries. HKVC achieves subquadratic complexity—approaching \(O(N\log N)\)—using only standard dense operations, and seamlessly integrates with existing transformer libraries. We implement HKVC in GPT-2 Small and conduct extensive evaluation on PG-19 (language modeling), BookSum (summarization), and an additional legal-documents summarization benchmark. HKVC reduces peak GPU memory by up to 50\% and inference latency by 35\%, with only a 1.7\% rise in perplexity and a 1.2-point ROUGE-1 decrease. We provide detailed design rationale, theoretical complexity proofs, rich ablation studies, and real-world case studies, demonstrating HKVC’s practicality for ultra-long-context applications.
+\end{abstract}
+
+\section{Introduction}
+Modern transformer models power state-of-the-art systems in translation, summarization, QA, and more, yet self-attention scales poorly with input length, limiting real-world use on documents beyond a few thousand tokens. Applications such as legal document analysis, scientific literature review, and multi-hour meeting summarization demand efficient handling of tens of thousands of tokens. Existing solutions trade off complexity, implementation effort, or fidelity. HKVC addresses these limitations by preserving exact local context via a fixed-size recent window, compressing older context into hierarchical summary levels, and using only built-in dense matrix operations for immediate deployment.
+
+\end{document}
